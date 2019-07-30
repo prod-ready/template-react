@@ -1,11 +1,13 @@
 version: 0.2
 phases:
- install:
-   commands:
-     - echo "install step"
  pre_build:
    commands:
-     - echo "pre_build step"
+     - echo Installing source NPM dependencies...
+     - npm install
+ build:
+   commands:
+     - echo Build started on `date`
+     - npm run build
  build:
    commands:
      - aws s3 sync --delete . "s3://static-website111-artifact-bucket"
